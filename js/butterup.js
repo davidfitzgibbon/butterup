@@ -1,10 +1,12 @@
 $(function () {
 
-	var butterup = {};
+	butterup = {};
 
-	butterup.horizontal_carousel = function () {
-		var carousel = $('.horizontal_carousel');
+	butterup.horizontal_carousel = function (item) {
+		var carousel = $(item);
 		var panels = [];
+
+		carousel.addClass('horizontal_carousel');
 
 		carousel.find('.panel').each(function(){
 			var panel = $(this);
@@ -12,21 +14,21 @@ $(function () {
 		});
 
 		var count = panels.length;
-		console.log('count: ' + count);
 
 		// CREATE THE CONTROLS
 		var controls = '<div class=controls>';
-			for (var i = 0; i < count; i++) { console.log('hi'); controls += '<a href=# data-child=' + i + '></a>'; }
+			for (var i = 0; i < count; i++) { controls += '<a href=# data-child=' + i + '></a>'; }
 		controls += '</div>';
 		carousel.append(controls);
 
 		// select the controls
 		controls = $('.controls');
+		controls.find('a:nth-child(1)').addClass('selected');
 
-		carousel_controls(controls);
+		carousel_controls(carousel, controls);
 	};
 
-	function carousel_controls (controls) {
+	function carousel_controls (carousel, controls) {
 		controls.click( function (e) {
 			if(e.target.tagName == "A") {
 				var child = $(e.target),
@@ -36,11 +38,8 @@ $(function () {
 				controls.find('a').each(function(){$(this).removeClass('selected');});
 				child.addClass('selected');
 
-				$('.horizontal_carousel .panel').hide();
-				$('.horizontal_carousel .panel:nth-child(' + childNum + ')').show();
-
-
-				console.log(' Move to the ' + childNum + ' item in the list');
+				carousel.find('.panel').hide();
+				carousel.find('.panel:nth-child(' + childNum + ')').show();
 			}
 		} );
 	}

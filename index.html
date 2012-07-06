@@ -20,7 +20,7 @@
 
 <body>
 
-	<div class='horizontal_carousel'>
+	<div id='horizontal_carousel'>
 		<div class="panel red">Panel Red</div>
 		<div class="panel green">Panel Green</div>
 		<div class="panel blue">Panel Blue</div>
@@ -29,6 +29,11 @@
 	<!-- scripts concatenated and minified via build script -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="js/butterup.js"></script>
+	<script>
+		$(function(){
+			butterup.horizontal_carousel('#horizontal_carousel');
+		});
+	</script>
 
 </body>
 </html>

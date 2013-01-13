@@ -1,4 +1,6 @@
 butterup
 ========
 
-super raw and new and unwritten, dont bother lookin at this at all yet.
+Discontinued. Has been folded into the Furious Tribe Papaya.js project. 
+
+This should be released as an open source project in the coming months.
